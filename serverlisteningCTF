@@ -1,3 +1,4 @@
+/* language: python */
 # Setup server listening on ('localhost', 10000)
 # receive data then send data back after XORing with the key
 # attackthehumans
