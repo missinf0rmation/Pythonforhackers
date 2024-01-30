@@ -1,4 +1,4 @@
- Setup server listening on ('localhost', 10000)
+# Setup server listening on ('localhost', 10000)
 # receive data then send data back after XORing with the key
 # attackthehumans
 #
@@ -47,4 +47,26 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             # Send the XORed data back to the client
             client_socket.sendall(xor_result.encode('utf-8'))
 
-    print(f"Connection with {client_address} closed"
+    print(f"Connection with {client_address} closed")
+
+# One of the agents has intercepted a file from the aliens
+# The flag is hidden in a large amount of non-alphanumeric characters.
+# The file lives at /tmp/destroymoonbase.gif
+#
+file_path = "/tmp/destroymoonbase.gif"
+
+try:
+    with open(file_path, "r") as file:
+        # Read the file contents
+        file_contents = file.read()
+        
+    import re
+    alphanumeric_text = re.sub(r'[^a-zA-Z0-9]', '', file_contents)
+    
+    print("Alphanumeric text from the file:")
+    print(alphanumeric_text)
+    
+except FileNotFoundError:
+    print(f"File not found at '{file_path}'")
+except Exception as e:
+    print(f"Error: {e}")
